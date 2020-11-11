@@ -25,7 +25,8 @@ public class ByFuture {
         System.out.println("异步计算结果为："+future.get());
          
         System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
-        
+
+        executorService.shutdown();
         // 然后退出main线程
     }
     
