@@ -20,7 +20,7 @@ public class UserService {
         userMapper.insert(user);
     }
 
-    @DS(DataSourceConstants.DS_KEY_SLAVE1)
+    @DS(DataSourceConstants.DS_KEY_SLAVE)
     public List<User> getAll(){
         return userMapper.selectList(null);
     }

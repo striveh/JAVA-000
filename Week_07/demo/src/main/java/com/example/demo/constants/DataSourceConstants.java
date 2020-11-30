@@ -5,6 +5,12 @@ public class DataSourceConstants {
      * master数据源
      */
     public static final String DS_KEY_MASTER = "master";
+
+    /**
+     * master数据源
+     */
+    public static final String DS_KEY_SLAVE = "slave";
+
     /**
      * slave1数据源
      */

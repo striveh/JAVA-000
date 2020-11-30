@@ -2,6 +2,8 @@ package com.example.demo.context;
 
 import com.example.demo.constants.DataSourceConstants;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class DynamicDataSourceContextHolder {
 
     /**
@@ -9,11 +11,24 @@ public class DynamicDataSourceContextHolder {
      */
     private static final ThreadLocal<String> DATASOURCE_CONTEXT_KEY_HOLDER = new ThreadLocal<>();
 
+    private static final AtomicInteger counter = new AtomicInteger(-1);
+
     /**
      * 设置数据源
      * @param key
      */
     public static void setContextKey(String key){
+
+        if (key.equals(DataSourceConstants.DS_KEY_SLAVE)){
+            //  读库负载均衡(轮询方式)
+            int index = counter.getAndIncrement() % 2;
+            if (index == 0) {
+                key = DataSourceConstants.DS_KEY_SLAVE1;
+            } else {
+                key = DataSourceConstants.DS_KEY_SLAVE2;
+            }
+        }
+
         System.out.println("切换数据源"+key);
         DATASOURCE_CONTEXT_KEY_HOLDER.set(key);
     }

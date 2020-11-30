@@ -33,6 +33,12 @@ class DemoApplicationTests {
 	@Test
 	public void getUsers(){
 		userService.getAll().forEach(System.out::println);
+
+		userService.getAll().forEach(System.out::println);
+
+		userService.getAll().forEach(System.out::println);
+
+		userService.getAll().forEach(System.out::println);
 	}
 
 }
